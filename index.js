@@ -5,7 +5,7 @@ var fs = require('fs');
 	cryptfs = require('./cryptfs/main');
 
 // get command line arguements
-var password = 'd6F3Efeq';
+var password = 'passwordstringhere';
 	operation_type = process.argv[2];
 
 
