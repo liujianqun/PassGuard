@@ -15,21 +15,22 @@ if (operation_type=='e') {
 	//read file contents synchronioulsy (seems safe for now)
 	console.log("Getting file contents.");
 	var file_type = path.extname(file_path);
-	
-	var contents = fs.readFileSync(file_path, 'utf8', function (err,data) { //for some reason had to specify for this to be read as UTF
+	//for some reason had to specify for this to be read as UTF-8
+	var contents = fs.readFileSync(file_path, 'utf8', function (err,data) { 
 		if (err) {
 		return console.log(err);
 		}
 		console.log(data);
 	});
-
+	//do the actual encrypting
 	var encrypted = crypt.encrypt(contents,password);
-	
+	//write encrypted contents to file
 	cryptfs.saveToFile(file_path,encrypted,'encrypt',file_type);
 
 }else if(operation_type=='d') {
 
-	var file_path = process.argv[3];
+	var file_path = process.argv[3]; //get file path
+	
 	var file_type = path.extname(file_path);
 	var encrypted_contents = fs.readFileSync(file_path, 'utf8', function (err,data) { //for some reason had to specify for this to be read as UTF
 		if (err) {
@@ -37,11 +38,10 @@ if (operation_type=='e') {
 		}
 		console.log(data);
 	});
-
+	
+	//decrypt file
 	var decrypted = crypt.decrypt(encrypted_contents,password);
-
-	console.log(decrypted);
-
+	//write encrypted contents to file
 	cryptfs.saveToFile(file_path,decrypted,'decrypt',file_type);	
 
 };
