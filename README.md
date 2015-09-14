@@ -1,4 +1,4 @@
-# PassGuard
+<img src="http://s13.postimg.org/vmrrlavav/passguard_logo.png" alt="Passguard logo">
 Encrypt your files to modern day standards.
 
 PassGuard helps you encrypt & decrypt specific files of your choice for either local storage or cloud storage.
