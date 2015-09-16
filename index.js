@@ -4,8 +4,8 @@ var fs = require('fs');
 	crypt = require('./crypt/main');
 	cryptfs = require('./cryptfs/main');
 
-// get command line arguements
-var password = 'passwordstringhere';
+// get command line arguements -not so safe to do this at the moment though il allow it,
+var password = process.argv[4];
 	operation_type = process.argv[2];
 
 
@@ -44,4 +44,16 @@ if (operation_type=='e') {
 	//write encrypted contents to file
 	cryptfs.saveToFile(file_path,decrypted,'decrypt',file_type);	
 
+}else if(operation_type=='-v'){
+	
+	console.log("Passguard Version is 0.0.1.")
+}else if(operation_type=='-h'){
+	
+	console.log("| ___ \           |  __ \                   | |
+| |_/ /_ _ ___ ___| |  \/_   _  __ _ _ __ __| |
+|  __/ _` / __/ __| | __| | | |/ _` | '__/ _` |
+| | | (_| \__ \__ \ |_\ \ |_| | (_| | | | (_| |
+\_|  \__,_|___/___/\____/\__,_|\__,_|_|  \__,_|
+                                               
+      ")
 };
